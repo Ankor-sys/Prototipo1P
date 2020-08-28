@@ -5,6 +5,8 @@
  */
 package prototipop1;
 
+import java.io.IOException;
+
 /**
  *
  * @author SEBAS
@@ -40,6 +42,7 @@ public class MDI extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,9 +97,19 @@ public class MDI extends javax.swing.JFrame {
         jMenu2.add(jMenuItem6);
 
         jMenuItem4.setText("Clientes");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuItem5.setText("Proveedores");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem5);
 
         jMenuBar1.add(jMenu2);
@@ -108,6 +121,15 @@ public class MDI extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Herramientas");
+
+        jMenuItem7.setText("Calculadora");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem7);
+
         jMenuBar1.add(jMenu5);
 
         jMenu6.setText("Ayuda");
@@ -152,6 +174,36 @@ public class MDI extends javax.swing.JFrame {
         FormInventarios ventana = new FormInventarios();
         jDesktopPane1.add(ventana);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        FormClientes ventana = new FormClientes();
+        jDesktopPane1.add(ventana);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        FormProveedores ventana = new FormProveedores();
+        jDesktopPane1.add(ventana);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+            try        
+    {
+        Runtime rt = Runtime.getRuntime();           
+        Process p = rt.exec("calc");            
+        p.waitFor();        
+    }        
+    catch ( IOException ioe )       
+    {            
+        ioe.printStackTrace();
+    }         
+    catch ( InterruptedException ie )
+    {            
+        ie.printStackTrace();     
+    }
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,5 +255,6 @@ public class MDI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     // End of variables declaration//GEN-END:variables
 }
