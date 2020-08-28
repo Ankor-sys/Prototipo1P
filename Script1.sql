@@ -48,3 +48,8 @@ foreign key (nit_proveedor) references proveedores(nit_proveedores),
 foreign key (id_producto) references productos(id_producto)
 )engine=innodb;
 
+create table Seguridad(
+Usuario varchar(50),
+Password_usuario varchar(50),
+primary key (Usuario, Password_usuario)
+)engine=innodb;
