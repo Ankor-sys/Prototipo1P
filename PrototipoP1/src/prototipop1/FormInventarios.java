@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class FormInventarios extends javax.swing.JInternalFrame {
 
-    private static String db = "NOMINA_SALARIO";
+    private static String db = "multibodegas";
     private static String user = "root";
     private static String password = "Sebas1234";
     private static String host = "localhost";
@@ -258,7 +258,7 @@ public class FormInventarios extends javax.swing.JInternalFrame {
 
             try{
                 Connection cn = DriverManager.getConnection(server, user, password);
-                PreparedStatement pst2 = cn.prepareStatement("insert into inventario values(?,?,?)");
+                PreparedStatement pst2 = cn.prepareStatement("insert into inventarios values(?,?,?)");
 
                 pst2.setString(1, txtid.getText().trim());
                 pst2.setString(2, txtIdProducto.getText().trim());
