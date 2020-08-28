@@ -34,9 +34,9 @@ public class MDI extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
@@ -58,6 +58,11 @@ public class MDI extends javax.swing.JFrame {
         jMenu1.setText("Abrir");
 
         jMenuItem1.setText("Compras");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Ventas");
@@ -73,16 +78,26 @@ public class MDI extends javax.swing.JFrame {
         jMenu2.setText("Catalogos");
 
         jMenuItem3.setText("Productos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
+
+        jMenuItem6.setText("Inventarios");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem6);
 
         jMenuItem4.setText("Clientes");
         jMenu2.add(jMenuItem4);
 
         jMenuItem5.setText("Proveedores");
         jMenu2.add(jMenuItem5);
-
-        jMenuItem6.setText("Inventarios");
-        jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
 
@@ -116,7 +131,27 @@ public class MDI extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
+        FormVentas ventana = new FormVentas();
+        jDesktopPane1.add(ventana);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        FormCompras ventana = new FormCompras();
+        jDesktopPane1.add(ventana);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        FormProductos ventana = new FormProductos();
+        jDesktopPane1.add(ventana);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        FormInventarios ventana = new FormInventarios();
+        jDesktopPane1.add(ventana);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments

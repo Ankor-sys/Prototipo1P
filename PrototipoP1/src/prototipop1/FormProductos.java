@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 public class FormProductos extends javax.swing.JInternalFrame {
 
     private static String db = "multibodegas";
-    private static String user = "rex";
+    private static String user = "root";
     private static String password = "Sebas1234";
     private static String host = "localhost";
     private static String server = "jdbc:mysql://"+ host + "/" +db; 
@@ -242,10 +242,12 @@ public class FormProductos extends javax.swing.JInternalFrame {
             
             txtid.setText("");
             txtMarca.setText("");
-            
+            txtNombre.setText("");
+            txtPrecio.setText("");
             
         }catch (Exception e){
-            
+            JOptionPane.showMessageDialog(null, "Error");
+                    System.out.println(e);
         }
                 
 
@@ -261,10 +263,12 @@ public class FormProductos extends javax.swing.JInternalFrame {
             String IdPuesto = txtBuscar.getText().trim();
             
             Connection cn = DriverManager.getConnection(server, user, password);
-            PreparedStatement pst = cn.prepareStatement("update PUESTO set IdPuesto = ?,NombrePuesto = ? where IdPuesto = " + IdPuesto);
+            PreparedStatement pst = cn.prepareStatement("update productos set id_producto = ?,marca = ?, nombre_producto =?, precio = ? where id_producto = " + IdPuesto);
             
             pst.setString(1, txtid.getText().trim());
              pst.setString(2, txtMarca.getText().trim());
+             pst.setString(3, txtNombre.getText().trim());
+             pst.setString(4, txtPrecio.getText().trim());
             
             pst.executeUpdate();
             
@@ -272,7 +276,8 @@ public class FormProductos extends javax.swing.JInternalFrame {
             
             txtid.setText("");
             txtMarca.setText("");
-            
+            txtNombre.setText("");
+            txtPrecio.setText("");
             
         } catch (Exception e) {
         }
@@ -284,17 +289,18 @@ public class FormProductos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try{
             Connection cn = DriverManager.getConnection(server, user, password);
-            PreparedStatement pst = cn.prepareStatement("select * from PUESTO where IdPuesto = ?");
+            PreparedStatement pst = cn.prepareStatement("select * from productos where id_producto = ?");
             pst.setString(1, txtBuscar.getText().trim());
             
             ResultSet rs = pst.executeQuery();
             
             if(rs.next()){
-                txtid.setText(rs.getString("IdPuesto"));
-                txtMarca.setText(rs.getString("NombrePuesto"));
-                
+                txtid.setText(rs.getString("id_producto"));
+                txtMarca.setText(rs.getString("marca"));
+                txtNombre.setText(rs.getString("nombre_producto"));
+                txtPrecio.setText(rs.getString("precio"));
             } else {
-                JOptionPane.showMessageDialog(null, "Alumno no registrado.");
+                JOptionPane.showMessageDialog(null, "Producto no registrado.");
             }
             
         }catch (Exception e){
@@ -307,15 +313,15 @@ public class FormProductos extends javax.swing.JInternalFrame {
         
         try {
              Connection cn = DriverManager.getConnection(server, user, password);
-            PreparedStatement pst = cn.prepareStatement("delete from PUESTO where IdPuesto = ?");
+            PreparedStatement pst = cn.prepareStatement("delete from productos where id_producto = ?");
             
             pst.setString(1, txtBuscar.getText().trim());
             pst.executeUpdate();
             
             txtid.setText("");
             txtMarca.setText("");
-           
-            
+            txtNombre.setText("");
+            txtPrecio.setText("");
             
         } catch (Exception e) {
         }
